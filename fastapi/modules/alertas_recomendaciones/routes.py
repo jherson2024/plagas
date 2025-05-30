@@ -1,0 +1,1 @@
+#alerta,niveles de alerta,alerta_plaga,recomendacion

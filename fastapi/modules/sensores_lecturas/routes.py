@@ -1,0 +1,1 @@
+#sensor,lectura_sensor
