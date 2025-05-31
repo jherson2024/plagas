@@ -1,43 +1,50 @@
 # schemas.py
 
 from datetime import date
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
-class LoginRequest(BaseModel):
-    email: str
-    contraseña: str
 
+class UsuarioCreate(BaseModel):
+    UsuNom: str
+    UsuEma: EmailStr
+    UsuNomUsu: str
+    UsuCon: str
+    UsuIdiPre: Optional[str] = "es"
+
+class LoginRequest(BaseModel):
+    identificador: str
+    UsuCon: str
 
 class UsuarioOut(BaseModel):
-    id: int
-    nombre: Optional[str]
-    email: Optional[str]
-    nombre_usuario: Optional[str]
-    idioma_preferido: Optional[str]
-    fecha_creacion: Optional[date]
-    estado: Optional[str]
-    imagen_perfil: Optional[str]
+    UsuCod: int
+    UsuNom: Optional[str]
+    UsuEma: Optional[str]
+    UsuNomUsu: Optional[str]
+    UsuIdiPre: Optional[str]
+    UsuFecCre: Optional[date]
+    UsuEstReg: Optional[str]
+    UsuUrlFotPer: Optional[str]
+
 class LoginResponse(BaseModel):
     access_token: str
     token_type: str
     usuario: UsuarioOut
 
 class UsuarioUpdate(BaseModel):
-    Nom: Optional[str] = None         # Nombre
-    Ema: Optional[str] = None         # Email
-    NomUsu: Optional[str] = None      # Nombre de usuario
-    IdiPre: Optional[str] = None      # Idioma preferido
-
+    UsuNom: Optional[str] = None         # Nombre
+    UsuEma: Optional[str] = None         # Email
+    UsuNomUsu: Optional[str] = None      # Nombre de usuario
+    UsuIdiPre: Optional[str] = None      # Idioma preferido
 
 class CambioContraseñaRequest(BaseModel):
-    contraseña_actual: str
-    nueva_contraseña: str
-    ip: str
+    password_actual: str
+    nueva_password: str
+    ip: Optional[str] = None
 
 # schemas.py
 class AsignacionCreate(BaseModel):
-    usuario_id: int
-    rol_id: int
-    parcela_id: Optional[int]
-    cultivo_id: Optional[int]
-    fecha_asignacion: date
+    AsiUsuCod: int
+    AsiRolCod: int
+    AsiParCod: Optional[int]
+    AsiCulCod: Optional[int]
+    AsiFecAsi: date
