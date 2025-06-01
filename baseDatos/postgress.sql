@@ -338,7 +338,6 @@ CREATE TABLE alerta_por_plaga (
     FOREIGN KEY (AleCulCod) REFERENCES cultivo(CulCod),
     FOREIGN KEY (AleUsuCod) REFERENCES usuario(UsuCod)
 );
-
 CREATE TABLE evaluacion_tratamiento (
     EvaCod SERIAL PRIMARY KEY,
     EvaTraPlaCod INT NOT NULL,

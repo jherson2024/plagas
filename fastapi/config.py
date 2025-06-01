@@ -1,6 +1,7 @@
 # config.py
 
-BACKEND_URL = "http://localhost:8000"  # Cambia esto si usas un dominio real o puerto diferente
+BACKEND_URL = "http://192.168.16.119:8000"
+ # Cambia esto si usas un dominio real o puerto diferente
 STATIC_URL = f"{BACKEND_URL}/static"
 
 # Carpeta donde se guardan las imágenes de cultivos (dentro de /static)

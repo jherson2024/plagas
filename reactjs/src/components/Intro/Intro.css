@@ -1,0 +1,46 @@
+.welcome-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+}
+
+.intro-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.intro-video {
+  width: 100%;
+  max-width: 700px;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.intro-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.intro-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  text-align: left;
+}
+
+.intro-list img {
+  width: 40px;
+  height: 40px;
+}
+
+.note {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #555;
+}

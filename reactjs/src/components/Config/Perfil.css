@@ -1,0 +1,40 @@
+.profile-form h2 {
+  font-size: var(--veinte4);
+  margin-bottom: 20px;
+}
+.profile-section h3 {
+  margin-top: 20px;
+  font-size: var(--dieciocho);
+}
+.profile-photo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+.profile-photo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+input, select {
+  padding: 10px;
+  font-size: var(--catorce);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.update-button {
+  padding: 10px;
+  background-color: #7d707c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+}

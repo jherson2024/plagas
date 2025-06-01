@@ -1,0 +1,58 @@
+.parcelas {
+  padding: 1rem;
+}
+
+.mapa-img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+form input,
+form button {
+  margin: 0.4rem 0.2rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #5e5e5e;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #000000;
+}
+
+.tabla-parcelas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tabla-parcelas th,
+.tabla-parcelas td {
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.tabla-parcelas tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla-parcelas button {
+  margin-right: 4px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color:transparent;
+}
+
+.tabla-parcelas button:hover {
+  background-color: #ccc;
+}
+

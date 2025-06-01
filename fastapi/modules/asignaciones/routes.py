@@ -8,9 +8,7 @@ from .schemas import (
     AsignacionRolUsuarioUpdate,
     AsignacionRolUsuarioOut
 )
-
 router = APIRouter()
-
 # Crear una asignación
 @router.post("/", response_model=AsignacionRolUsuarioOut)
 def crear_asignacion(asignacion: AsignacionRolUsuarioCreate, db: Session = Depends(get_db)):
@@ -29,18 +27,19 @@ def crear_asignacion(asignacion: AsignacionRolUsuarioCreate, db: Session = Depen
 @router.get("/dueno/{dueno_id}", response_model=list[AsignacionRolUsuarioOut])
 def obtener_asignaciones_por_dueno(dueno_id: int, db: Session = Depends(get_db)):
     # Subquery de parcelas del dueño
-    parcelas_ids = db.query(Parcela.ParCod).filter(Parcela.ParUsuCod == dueno_id)
+    parcelas_ids_subq = db.query(Parcela.ParCod).filter(Parcela.ParUsuCod == dueno_id).subquery()
     
-    # Subquery de cultivos del dueño
-    cultivos_ids = db.query(Cultivo.CulCod).filter(Cultivo.CulUsuCod == dueno_id)
-    
-    # Asignaciones a esas parcelas o cultivos
+    # Subquery de cultivos que están en esas parcelas
+    cultivos_ids_subq = db.query(Cultivo.CulCod).filter(Cultivo.CulParCod.in_(parcelas_ids_subq)).subquery()
+
+    # Asignaciones relacionadas a esas parcelas o a esos cultivos
     asignaciones = db.query(AsignacionRolUsuario).filter(
-        (AsignacionRolUsuario.AsiParCod.in_(parcelas_ids)) |
-        (AsignacionRolUsuario.AsiCulCod.in_(cultivos_ids))
+        (AsignacionRolUsuario.AsiParCod.in_(parcelas_ids_subq)) |
+        (AsignacionRolUsuario.AsiCulCod.in_(cultivos_ids_subq))
     ).all()
 
     return asignaciones
+
 
 
 # Modificar una asignación
@@ -72,16 +71,16 @@ def cambiar_estado_asignacion(asignacion_id: int, nuevo_estado: str, db: Session
     db.refresh(asignacion)
     return asignacion
 
-# Eliminar lógicamente (marcar como inactivo)
 @router.delete("/{asignacion_id}")
 def eliminar_asignacion(asignacion_id: int, db: Session = Depends(get_db)):
     asignacion = db.query(AsignacionRolUsuario).filter_by(AsiCod=asignacion_id).first()
     if not asignacion:
         raise HTTPException(status_code=404, detail="Asignación no encontrada.")
 
-    asignacion.AsiEstReg = 'I'
+    db.delete(asignacion)  # ⚠️ eliminación real
     db.commit()
-    return {"mensaje": "Asignación desactivada correctamente."}
+    return {"mensaje": "Asignación eliminada permanentemente."}
+
 
 @router.get("/parcelas/dueno/{dueno_id}")
 def obtener_parcelas_por_dueno(dueno_id: int, db: Session = Depends(get_db)):

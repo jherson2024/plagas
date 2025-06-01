@@ -1,1 +1,5 @@
 pip install fastapi uvicorn
+sqlacodegen mysql+pymysql://root:1234@localhost:3306/plagas > models.py
+uvicorn main:app --reload
+pip install "pydantic[email]"
+pip install python-jose[cryptography] passlib[bcrypt]

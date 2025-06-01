@@ -9,9 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # o especifica dominios como ["http://localhost:3000"]
+    allow_origins=["http://192.168.16.119:3000"],  # ✅ Solo el origen que usás
     allow_credentials=True,
-    allow_methods=["*"],  # Esto incluye OPTIONS, GET, POST, etc.
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 # Montar carpeta estática para imágenes

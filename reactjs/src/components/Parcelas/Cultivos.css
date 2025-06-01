@@ -1,0 +1,152 @@
+.cultivos-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Contenedor de tarjeta + detalle */
+.tarjeta-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tarjeta base */
+.tarjeta-cultivo {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+.sombra-inferior {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+.tarjeta-cultivo:hover {
+  transform: scale(1.03);
+}
+
+/* Elementos posicionados */
+.tipo {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(10, 10, 10, 0.5);
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+.ojo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #ffaa00;
+}
+
+.nombre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+}
+
+.programado {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.plaga {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color:transparent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Tarjeta detalle flotante a la derecha */
+.tarjeta-detalle {
+  position: absolute;
+  top: 0;
+  left: 256px;
+  width: 240px;
+  height: 100%;
+  background: #fffdfa;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 0rem 1rem;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+/* Mostrar detalle al hacer hover en la tarjeta */
+.tarjeta-wrapper:hover .tarjeta-detalle {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.acciones-cultivo button:hover {
+  background-color: #eee;
+}
+/* Botones verticales pegados a la derecha */
+.acciones-laterales {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background-color: transparent;
+  padding: 6px;
+}
+
+.acciones-laterales button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.acciones-laterales button:hover {
+  background-color: #f0f0f0;
+}

@@ -1,0 +1,7 @@
+npx create-react-app reactjs
+npm start
+npm install axios
+npm install react-router-dom
+
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload 
+set HOST=192.168.16.119&&npm start

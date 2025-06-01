@@ -1,0 +1,26 @@
+.password-form {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+}
+.password-form input {
+  display: block;
+  width: 40%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+.password-form button {
+  margin-top: 1rem;
+}
+.mensaje {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.mensaje-error {
+  color: red;
+}
+
+.mensaje-exito {
+  color: green;
+}
