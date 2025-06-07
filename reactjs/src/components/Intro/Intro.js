@@ -2,55 +2,49 @@ import './Intro.css';
 
 const Welcome = () => {
   return (
-    <div className="welcome-container">
-      <img src="/assets/logo-agro-inteligente.png" alt="Logo del sistema" className="intro-logo" />
+    <div className="welcome-container card">
+      <h1 className="welcome-title">Bienvenid@</h1>
 
-      <h1>Bienvenido al Sistema de Gestión Agrícola Inteligente</h1>
-
-      <video className="intro-video" controls autoPlay muted loop>
-        <source src="/assets/video-intro.mp4" type="video/mp4" />
-        Tu navegador no soporta videos HTML5.
-      </video>
+      <div className="intro-video-wrapper">
+        <video className="intro-video" controls autoPlay muted loop>
+          <source src="/video/intro.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+      </div>
 
       <p>
-        Esta plataforma permite gestionar de forma integral parcelas, cultivos, sensores, usuarios y 
-        análisis con inteligencia artificial. Está diseñada para agricultores, investigadores y técnicos 
-        que necesitan optimizar la producción agrícola y el monitoreo de plagas.
+        Este sistema te permite realizar algunas tareas básicas para el seguimiento de plagas en el campo.
+        Podrás marcar zonas en un mapa, registrar capturas fotográficas y consultar información asociada.
       </p>
 
-      <h2>¿Qué puedes hacer en esta plataforma?</h2>
+      <p>
+        Es una herramienta sencilla, pensada para comenzar con un monitoreo visual básico y apoyar decisiones técnicas con información organizada.
+      </p>
+
+      <h2>Funciones disponibles:</h2>
       <ul className="intro-list">
         <li>
-          <img src="/assets/icon-usuarios.png" alt="Usuarios" />
-          <strong>Usuarios y Roles:</strong> Gestiona cuentas con permisos personalizados.
+          <img src="/assets/icon-parcelas.png" alt="Mapa" />
+          <strong>Mapa:</strong> Dibuja áreas para inspección.
         </li>
         <li>
-          <img src="/assets/icon-parcelas.png" alt="Parcelas" />
-          <strong>Parcelas y Cultivos:</strong> Organiza tus terrenos y cultivos de forma visual.
+          <img src="/assets/icon-imagenes.png" alt="Capturas" />
+          <strong>Capturas:</strong> Registra imágenes de plagas geolocalizadas.
         </li>
         <li>
-          <img src="/assets/icon-sensor.gif" alt="Sensores" />
-          <strong>Sensores:</strong> Conecta sensores y monitorea variables en tiempo real.
+          <img src="/assets/icon-ia.png" alt="IA básica" />
+          <strong>IA (en pruebas):</strong> Analiza imágenes con modelos simples.
         </li>
         <li>
-          <img src="/assets/icon-imagenes.png" alt="Imágenes" />
-          <strong>Lecturas e Imágenes:</strong> Visualiza datos y fotografía geolocalizada.
-        </li>
-        <li>
-          <img src="/assets/icon-ia.png" alt="IA" />
-          <strong>Análisis con IA:</strong> Detecta plagas y evalúa tratamientos con modelos inteligentes.
-        </li>
-        <li>
-          <img src="/assets/icon-bitacora.png" alt="Bitácora" />
-          <strong>Historial y Bitácoras:</strong> Revisa actividades y eventos registrados por usuarios.
+          <img src="/assets/icon-usuarios.png" alt="Usuario" />
+          <strong>Perfil:</strong> Cambia tu información de acceso.
         </li>
       </ul>
 
-      <p className="note">
-        Puedes navegar por el menú lateral para comenzar. 
-        <br />
-        * Todos los campos con asterisco son obligatorios en los formularios del sistema.
-      </p>
+      <div className="welcome-actions">
+        <p>Usa el menú lateral para comenzar.</p>
+        <p className="note">Este sistema está en desarrollo, y se irá mejorando con el tiempo.</p>
+      </div>
     </div>
   );
 };

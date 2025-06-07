@@ -1,0 +1,77 @@
+.mapa-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.mapa-imagen {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+}
+
+.btn-ver-todo {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.fondo-sombreado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-popup {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.form-popup input,
+.form-popup select,
+.form-popup button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+}
+.form-popup input[type="text"] {
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+.posicion-item {
+  background: #f8f8f8;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+.foto-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.foto-item-container {
+  width: 100px;
+  position: relative;
+}
+
+.foto-item {
+  width: 100%;
+  height: auto;
+}

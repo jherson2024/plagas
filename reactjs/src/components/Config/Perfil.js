@@ -1,3 +1,4 @@
+//Perfil.js
 import './Perfil.css';
 import { useAuth } from '../../context/AuthContext';
 import { useState, useRef, useEffect } from 'react';
@@ -8,73 +9,70 @@ const Perfil = () => {
   const fileInputRef = useRef(null);
   const defaultAvatar = '/img/default-avatar.png';
 
-  // Imagen inicial con fallback
   const [preview, setPreview] = useState(() =>
-    usuario?.UsuUrlFotPer || defaultAvatar
+    usuario?.UsuUrlImaPer || defaultAvatar
   );
- useEffect(() => {
-  setPreview(usuario?.UsuUrlFotPer || defaultAvatar);
-}, [usuario?.UsuUrlFotPer]);
-
+  useEffect(() => {
+    setPreview(usuario?.UsuUrlImaPer || defaultAvatar);
+  }, [usuario?.UsuUrlImaPer]);
   const [formData, setFormData] = useState({
     UsuNom: usuario?.UsuNom || "",
-    UsuEma: usuario?.UsuEma || "",
-    UsuNomUsu: usuario?.UsuNomUsu || "",
-    UsuIdiPre: usuario?.UsuIdiPre || "Español",
+    UsuNumWha: usuario?.UsuNumWha || "",
   });
-
   const handleFileChange = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const response = await subirFoto(file);
+      const nuevaFoto = response.UsuUrlImaPer;
 
-  try {
-    const response = await subirFoto(usuario.UsuCod, file);
-    const nuevaFoto = response.UsuUrlFotPer;
+      const nuevaFotoConBypass = `${nuevaFoto}?t=${Date.now()}`;
+      setPreview(nuevaFotoConBypass);
 
-   const nuevaFotoConBypass = `${nuevaFoto}?t=${Date.now()}`;
-   setPreview(nuevaFotoConBypass);
+      const usuarioActualizado = {
+        ...usuario,
+        UsuUrlImaPer: nuevaFoto,
+      };
 
-    const usuarioActualizado = {
-      ...usuario,
-      UsuUrlFotPer: nuevaFoto,
-    };
+      const token = localStorage.getItem('token');
+      login({ usuario: usuarioActualizado, token });
+    } catch (err) {
+      console.error("Error al subir la foto", err);
+    }
+  };
 
-    const token = localStorage.getItem('token'); // ⚠️ Importante: recuperar token
-    login({ usuario: usuarioActualizado, token }); // ✅ mantener forma esperada
-  } catch (err) {
-    console.error("Error al subir la foto", err);
-  }
-};
+  const handleRemovePhoto = async () => {
+    try {
+      await eliminarFoto();
+      setPreview(defaultAvatar);
 
- const handleRemovePhoto = async () => {
-  try {
-    await eliminarFoto(usuario.UsuCod);
-    setPreview(defaultAvatar);
+      const usuarioActualizado = {
+        ...usuario,
+        UsuUrlImaPer: null,
+      };
 
-    const usuarioActualizado = {
-      ...usuario,
-      UsuUrlFotPer: null,
-    };
+      const token = localStorage.getItem('token');
+      login({ usuario: usuarioActualizado, token });
+    } catch (err) {
+      console.error("Error al eliminar la foto", err);
+    }
+  };
 
-    const token = localStorage.getItem('token');
-    login({ usuario: usuarioActualizado, token });
-  } catch (err) {
-    console.error("Error al eliminar la foto", err);
-  }
-};
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await actualizarPerfil(usuario.UsuCod, formData);
+      await actualizarPerfil(formData);
       alert("Perfil actualizado");
     } catch (err) {
       console.error("Error al actualizar perfil", err);
     }
   };
+
   return (
     <div className="profile-form">
       <section className="profile-section">
@@ -104,41 +102,25 @@ const Perfil = () => {
           <input
             type="text"
             name="UsuNom"
-            placeholder="Name"
+            placeholder="Nombre"
             value={formData.UsuNom}
             onChange={handleInputChange}
           />
           <input
-            type="email"
-            name="UsuEma"
-            placeholder="Email"
-            value={formData.UsuEma}
+            type="tel"
+            name="UsuNumWha"
+            placeholder="Número de WhatsApp"
+            value={formData.UsuNumWha}
             onChange={handleInputChange}
           />
-          <input
-            type="text"
-            name="UsuNomUsu"
-            placeholder="UserName"
-            value={formData.UsuNomUsu}
-            onChange={handleInputChange}
-          />
+
           <label>
             <input type="checkbox" defaultChecked />
             Participar en acceso anticipado a nuevas funciones
           </label>
 
-          <h3>Preferencias</h3>
-          <select
-            name="UsuIdiPre"
-            value={formData.UsuIdiPre}
-            onChange={handleInputChange}
-          >
-            <option value="Español">Español</option>
-            <option value="Inglés">Inglés</option>
-          </select>
-
           <button type="submit" className="update-button">
-            Update Profile
+            Actualizar perfil
           </button>
         </form>
       </section>

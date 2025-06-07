@@ -1,0 +1,20 @@
+import torch
+from torchvision import transforms
+from PIL import Image
+
+# Cargar modelo
+modelo = torch.load("app/ia/modelos/modelo_cnn.pt")
+modelo.eval()
+
+# Preprocesar imagen
+def predecir_plaga(ruta_imagen):
+    imagen = Image.open(ruta_imagen).convert("RGB")
+    transformaciones = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+    ])
+    tensor = transformaciones(imagen).unsqueeze(0)  # Añadir batch
+    with torch.no_grad():
+        salida = modelo(tensor)
+        clase = torch.argmax(salida, dim=1).item()
+    return clase

@@ -1,1 +1,0 @@
-#modelo_ia,evaluaciones_modelo_ia

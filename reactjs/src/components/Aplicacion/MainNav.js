@@ -1,14 +1,12 @@
-import './MainNav.css'
-const MainNav = ({ onSelect, onLogoClick ,onToggleSidebar}) => {
+import './MainNav.css';
+import configMenu from './configMenu.json'; // importa el JSON de configuración
+
+const MainNav = ({ onSelect, onLogoClick, onToggleSidebar }) => {
   return (
     <nav className="main-nav">
-      <button
-  className="sidebar-toggle icon-button"
-  onClick={onToggleSidebar}
->
-  ☰
-</button>
-
+      <button className="sidebar-toggle icon-button" onClick={onToggleSidebar}>
+        ☰
+      </button>
       <img 
         src="/img/logo.png" 
         alt="Logo" 
@@ -18,14 +16,16 @@ const MainNav = ({ onSelect, onLogoClick ,onToggleSidebar}) => {
           onLogoClick();
         }}
       />
-      
       <ul className="main-nav-icons">
-        <li onClick={() => onSelect('parcelas')} title="Parcelas">🌾</li>
-        <li onClick={() => onSelect('sensores')} title="Sensores">📟</li>
-        <li onClick={() => onSelect('ia')} title="IA">🤖</li>
-        <li onClick={() => onSelect('alertas')} title="Alertas">🚨</li>
-        <li onClick={() => onSelect('admin')} title="Admin">🛠️</li>
-        <li onClick={() => onSelect('config')} title="Configuración">⚙️</li>
+        {Object.entries(configMenu).map(([clave, seccion]) => (
+          <li
+            key={clave}
+            onClick={() => onSelect(clave)}
+            title={seccion.titulo}
+          >
+            {seccion.icono || clave.toUpperCase()}
+          </li>
+        ))}
       </ul>
     </nav>
   );

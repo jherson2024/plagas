@@ -1,1 +1,0 @@
-#fotografia,analisis_ia

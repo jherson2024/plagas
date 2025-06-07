@@ -1,0 +1,38 @@
+.intro-mapa {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fefefe;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.intro-title {
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.intro-mapa p {
+  margin-bottom: 1rem;
+}
+
+.intro-button-group {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intro-button {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+

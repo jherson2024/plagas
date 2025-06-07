@@ -1,0 +1,7 @@
+usuario:nombre*(80),número de whatsapp*+(n),contrasena*(60)
+imagen captura:url de imagen*(160),posición en mapa*,clase(20),indicador(20)
+posición en mapa:posición x(n),posición y(n),mapa*,indicador(20)
+mapa: nombre*(80),usuario*,url de imagen*(80)
+
+
+

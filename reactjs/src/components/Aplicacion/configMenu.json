@@ -1,0 +1,48 @@
+{
+  "ia": {
+    "titulo": "Inteligencia Artificial",
+    "vistas": {
+      "analisis": {
+        "titulo": "Análisis de IA",
+        "componente": "AI"
+      },
+      "recomendaciones": {
+        "titulo": "Recomendaciones de IA",
+        "componente": "RecomendacionesIA"
+      }
+    },
+    "componenteIntro": "IntroIA"
+  },
+  "config": {
+    "titulo": "Configuración",
+    "vistas": {
+      "perfil": {
+        "titulo": "Perfil de Usuario",
+        "componente": "Perfil"
+      },
+      "contrasena": {
+        "titulo": "Cambiar Contraseña",
+        "componente": "Contrasena"
+      },
+      "bloqueos": {
+        "titulo": "Historial de Bloqueos",
+        "componente": "HistorialBloqueos"
+      }
+    },
+    "componenteIntro": "IntroConfig"
+  },
+  "mapa": {
+    "titulo": "Mapa",
+    "vistas": {
+      "capturas": {
+        "titulo": "Capturas de imagen",
+        "componente": "Capturas"
+      },
+      "mapa": {
+        "titulo": "Área",
+        "componente": "Mapa"
+      }
+    },
+    "componenteIntro": "IntroMapa"
+  }
+}

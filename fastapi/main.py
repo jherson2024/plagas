@@ -1,27 +1,33 @@
 # main.py
+
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from modules.usuarios_seguridad.routes import router as usuarios_seguridad_router
-from modules.agricultura.routes import router as agricultura_router
-from modules.asignaciones.routes import router as asignaciones_router
-# y así sucesivamente con tus otras carpetas...
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+import config  # Importa tu archivo de configuración
+
+from modules.usuario.routes import router as usuario_router
+from modules.mapa.routes import router as mapa_router
+from modules.imagen_captura.routes import router as imagen_captura_router
+from modules.ia.routes import router as ia_router
+
 app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://192.168.16.119:3000"],  # ✅ Solo el origen que usás
+    allow_origins=config.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# Montar carpeta estática para imágenes
+
+# Montar carpeta estática
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Registrar rutas de cada módulo
-app.include_router(usuarios_seguridad_router, prefix="/usuarios", tags=["Usuarios y Seguridad"])
-app.include_router(agricultura_router, prefix="/agricultura", tags=["Agricultura"])
-app.include_router(asignaciones_router, prefix="/asignaciones", tags=["Asignaciones"])
-# Agrega aquí el resto de tus routers...
+# Incluir routers
+app.include_router(usuario_router, prefix="/usuario", tags=["Usuario"])
+app.include_router(mapa_router, prefix="/mapas", tags=["Mapa"])
+app.include_router(imagen_captura_router, prefix="/imagen_captura", tags=["ImagenCaptura"])
+app.include_router(ia_router, prefix="/ia", tags=["IA"])
 
 @app.get("/")
 def read_root():

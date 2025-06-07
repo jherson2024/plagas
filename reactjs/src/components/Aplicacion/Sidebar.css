@@ -1,18 +1,25 @@
-/* Estilo base */
+/* Sidebar.css */
+
+/* Contenedor del contenido del sidebar */
 .sidebar-content {
-  width: 230px;
-  background-color: #191919;
-  color: white;
-  padding: 20px;
-  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #ffffff;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
+/* Título de la sección */
 .sidebar-title {
-  font-size: var(--dieciocho);
-  margin-bottom: 20px;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #df2e02;
 }
 
+/* Lista de opciones */
 .sidebar-menu {
   list-style: none;
   padding: 0;
@@ -20,47 +27,23 @@
 }
 
 .sidebar-menu li {
-  font-size: var(--dieciseis);
-  padding: 10px 0;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+  font-size: 1rem;
+  color: #333;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .sidebar-menu li:hover {
-  background-color: #2f2f2f;
+  background-color: #e0e0e0;
 }
 
-.sidebar-menu li.active {
-  font-weight: bold;
-  color: #10b981;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .sidebar {
-    display: none;
-    position: absolute;
-    top: 60px; /* debajo del nav */
-    left: 0;
-    width: 100%;
-    background-color: #191919;
-    z-index: 1001;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-
-  .sidebar.active {
-    display: block;
-  }
-
+/* Opcional: para evitar ancho completo en pantallas grandes */
+@media (min-width: 768px) {
   .sidebar-content {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .sidebar-menu li {
-    font-size: 16px;
-    padding: 12px;
-    border-bottom: 1px solid #333;
+    display: none;
   }
 }

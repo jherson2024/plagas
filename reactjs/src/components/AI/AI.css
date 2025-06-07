@@ -1,0 +1,73 @@
+/* AI.css */
+
+.ai-container {
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  text-align: center;
+  color: #555;
+}
+
+.file-input {
+  width: 100%;
+  max-width: 300px;
+}
+
+.preview {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.result {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  color: #333;
+}
+.result pre {
+  white-space: pre-wrap; /* Permite el ajuste de línea */
+  word-wrap: break-word; /* Rompe palabras largas si es necesario */
+  overflow-wrap: break-word; /* Alternativa moderna para romper palabras */
+  margin: 0; /* Quita el margen extra por defecto */
+  font-family: inherit; /* Opcional: para usar la fuente general del sitio */
+}
+
+
+.loading {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+/* Media query for small devices */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .result {
+    font-size: 0.9rem;
+  }
+}

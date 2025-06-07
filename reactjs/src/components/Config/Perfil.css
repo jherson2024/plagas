@@ -1,40 +1,85 @@
-.profile-form h2 {
-  font-size: var(--veinte4);
-  margin-bottom: 20px;
+
+.profile-form {
+  max-width: 100%;
+  padding: 16px;
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
+
 .profile-section h3 {
-  margin-top: 20px;
-  font-size: var(--dieciocho);
+  font-size: 1.5rem;
+  margin-bottom: 4px;
 }
+
+.profile-section p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+
 .profile-photo {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-  margin: 15px 0;
+  margin-bottom: 24px;
 }
+
 .profile-photo img {
-  width: 60px;
-  height: 60px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 2px solid #ddd;
 }
+
+.profile-photo button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 4px 0;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.profile-photo button:nth-child(2) {
+  background-color: #dc3545;
+}
+
 .form-grid {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 400px;
 }
-input, select {
-  padding: 10px;
-  font-size: var(--catorce);
-  border: 1px solid #ccc;
+
+.form-grid input[type="text"],
+.form-grid input[type="tel"] {
+  padding: 12px;
+  font-size: 1rem;
   border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+.form-grid label {
+  font-size: 0.85rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .update-button {
-  padding: 10px;
-  background-color: #7d707c;
+  background-color: #28a745;
   color: white;
   border: none;
+  padding: 12px;
   border-radius: 6px;
-  margin-top: 20px;
-  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 12px;
+  width: 100%;
 }

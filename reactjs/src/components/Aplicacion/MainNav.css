@@ -1,55 +1,45 @@
+/* MainNav.css */
+
 .main-nav {
-  width: 60px;
-  border-right: 2px solid #838383;
-  color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  background-color: #191919;
-  position: relative; /* Necesario para controlar z-index de hijos */
-  z-index: 10;
+  justify-content: space-between;
+  color: white;
+  padding: 12px 16px;
+  border-bottom: 1px solid #0056b3;
 }
 
-/* Solo visible en móvil */
+.main-logo {
+  height: 36px;
+  cursor: pointer;
+}
+
+/* Botón menú (hamburguesa) */
 .sidebar-toggle {
-  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
 }
 
-@media (max-width: 768px) {
-  .main-nav {
-    flex-direction: row;
-    width: 100%;
-    height: 60px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    border-right: none;
-    border-bottom: 1px solid #838383;
-  }
+/* Íconos de navegación */
+.main-nav-icons {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
 
-  .main-logo {
-    width: 35px;
-    margin: 0;
-  }
+.main-nav-icons li {
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
 
-  .main-nav-icons {
-    display: flex;
-    gap: 12px;
-  }
-
-  .main-nav-icons li {
-    margin: 0;
-    font-size: 20px;
-  }
-
-  .sidebar-toggle {
-    display: block;
-    font-size: 26px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 1100;
-  }
+.main-nav-icons li:active {
+  transform: scale(1.1);
 }

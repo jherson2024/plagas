@@ -1,7 +1,8 @@
 import { useAuth } from '../../context/AuthContext';
+import './Header.css'
 const Header = ({ titulo }) => {
   const { usuario } = useAuth();
-  const avatarUrl = usuario?.UsuUrlFotPer || '/img/default-avatar.png';
+  const avatarUrl = usuario?.UsuUrlImaPer || '/img/default-avatar.png';
   return (
     <header className="header">
       <div className="header-left">

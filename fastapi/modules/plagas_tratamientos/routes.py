@@ -1,1 +1,0 @@
-#plaga,imagen_plaga,severidad,infestacion_plaga,tratamiento_plaga,evaluacion_tratamiento

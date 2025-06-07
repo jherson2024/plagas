@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import Aplicacion from './components/Aplicacion/Aplicacion';
-import { AuthProvider } from './context/AuthContext'; // Asegúrate del path correcto
-
+import { AuthProvider } from './context/AuthContext'; 
+import './App.css'
 function App() {
   return (
     <AuthProvider> {/* 👈 Aquí va el proveedor, envolviendo todo */}
@@ -18,5 +18,4 @@ function App() {
     </AuthProvider>
   );
 }
-
 export default App;

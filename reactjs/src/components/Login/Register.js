@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registrarUsuario } from '../../services/authService'; // asegúrate que esta función exista
-import './Login.css'; // Usamos el mismo CSS del login para mantener diseño
+import { registrarUsuario, loginUsuario } from '../../services/authService';
+import './Login.css';
 import { useAuth } from '../../context/AuthContext';
 
 const Register = () => {
   const [UsuNom, setUsuNom] = useState('');
-  const [UsuNomUsu, setUsuNomUsu] = useState('');
-  const [UsuEma, setUsuEma] = useState('');
+  const [UsuNumWha, setUsuNumWha] = useState('');
   const [UsuCon, setUsuCon] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [cargando, setCargando] = useState(false);
@@ -18,16 +17,23 @@ const Register = () => {
     e.preventDefault();
     setMensaje('');
     setCargando(true);
+
     try {
-      const data = await registrarUsuario({
+      await registrarUsuario({
         UsuNom,
-        UsuNomUsu,
-        UsuEma,
+        UsuNumWha: parseInt(UsuNumWha),
         UsuCon,
-        UsuIdiPre: 'es',
-});
-      localStorage.setItem('token', data.token);
-      login({ usuario: data.usuario, token: data.token });
+      });
+
+      // Iniciar sesión automáticamente después del registro
+      const data = await loginUsuario({
+        UsuNumWha: parseInt(UsuNumWha),
+        UsuCon,
+      });
+
+      localStorage.setItem('token', data.access_token);
+      login({ usuario: data.usuario, token: data.access_token });
+
       navigate('/aplicacion');
     } catch (error) {
       setMensaje(error.message || 'Error al registrar');
@@ -39,68 +45,59 @@ const Register = () => {
   return (
     <div className="login-wrapper">
       <div className="login-container">
-      <div className="login-left">
-        <h1>Welcome!</h1>
-        <img src="/img/logo_b.png" alt="Smiley Icon" className="login-icon" />
-        <p className="login-brand">W.</p>
-        <p>Already have an account? <a href="/login">Log in</a></p>
-      </div>
+        <div className="login-left">
+          <h1>Welcome!</h1>
+          <img src="/img/logo_b.png" alt="Smiley Icon" className="login-icon" />
+          <p className="login-brand">W.</p>
+          <p>Already have an account? <a href="/login">Log in</a></p>
+        </div>
 
-      <div className="login-right">
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Username</label>
-          <label>Nombre completo</label>
-<input
-  type="text"
-  value={UsuNom}
-  onChange={(e) => setUsuNom(e.target.value)}
-  placeholder="Nombre completo"
-  required
-/>
+        <div className="login-right">
+          <h2>Register</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Nombre completo</label>
+            <input
+              type="text"
+              value={UsuNom}
+              onChange={(e) => setUsuNom(e.target.value)}
+              placeholder="Nombre completo"
+              required
+            />
 
-<label>Username</label>
-<input
-  type="text"
-  value={UsuNomUsu}
-  onChange={(e) => setUsuNomUsu(e.target.value)}
-  placeholder="Username"
-  required
-/>
+            <label>Número de WhatsApp</label>
+            <input
+              type="tel"
+              value={UsuNumWha}
+              onChange={(e) => setUsuNumWha(e.target.value)}
+              placeholder="Ej. 5491123456789"
+              required
+            />
 
-<label>Email</label>
-<input
-  type="email"
-  value={UsuEma}
-  onChange={(e) => setUsuEma(e.target.value)}
-  placeholder="Email"
-  required
-/>
+            <label>Contraseña</label>
+            <input
+              type="password"
+              value={UsuCon}
+              onChange={(e) => setUsuCon(e.target.value)}
+              placeholder="Contraseña"
+              required
+            />
 
-<label>Password</label>
-<input
-  type="password"
-  value={UsuCon}
-  onChange={(e) => setUsuCon(e.target.value)}
-  placeholder="Password"
-  required
-/>
-          <button type="submit" disabled={cargando}>
-            {cargando ? 'Registering...' : 'Create account'}
-          </button>
-        </form>
+            <button type="submit" disabled={cargando}>
+              {cargando ? 'Registrando...' : 'Crear cuenta'}
+            </button>
+          </form>
 
-        {mensaje && <p className="login-error">{mensaje}</p>}
+          {mensaje && <p className="login-error">{mensaje}</p>}
 
-        <div className="login-social">
-          <p>Or sign up with</p>
-          <div className="login-social-buttons">
-            <button>Google</button>
-            <button>Facebook</button>
-            <button>Twitter</button>
+          <div className="login-social">
+            <p>O regístrate con</p>
+            <div className="login-social-buttons">
+              <button>Google</button>
+              <button>Facebook</button>
+              <button>Twitter</button>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

@@ -5,3 +5,8 @@ npm install react-router-dom
 
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload 
 set HOST=192.168.16.119&&npm start
+
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload 
+set HOST=10.7.123.95 && npm start
